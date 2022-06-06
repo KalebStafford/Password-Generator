@@ -7,6 +7,29 @@ let generateBtn = document.getElementById("generate");
 let resultBtn = document.getElementById("result");
 let symbols = '~`!@#$%^&*()_-+={[}]:;"<,>.?/|';
 
+function randomLowercase() {
+    return String.fromCharCode(Math.floor(Math.random()*26)+97);
+};
+  
+function randomUppercase() {
+    return String.fromCharCode(Math.floor(Math.random()*26)+65);
+};
+  
+function randomNumbers() {
+    return +String.fromCharCode(Math.floor(Math.random()*10)+48);
+};
+  
+function randomSymbols() {
+    return symbols[Math.floor(Math.random()*symbols.length)];
+};
+
+let randomGeneration = {
+  lowercase: randomLowercase,
+  uppercase: randomUppercase,
+  numbers: randomNumbers,
+  symbols: randomSymbols,
+};
+
 generateBtn.addEventListener("click", function () {
     let Length = totalLength;
     let Lowercase = useLowercase;
