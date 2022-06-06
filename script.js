@@ -28,7 +28,18 @@ function passwordGenerate(lowercase, uppercase, numbers, symbols, length) {
   let TotalGenerated = lowercase + uppercase + numbers + symbols;
   let TotalArranged = [{ lowercase }, { uppercase }, { numbers }, { symbols }]
   .filter((data) => Object.values(data)[0]);
-// In progress
+
+  if (TotalGenerated === 0) {return "";};
+
+  for (let x = 0; x < length; x += TotalGenerated) {
+    TotalArranged.forEach((select) => {
+      let selectFunction = Object.keys(select)[0];
+      generatedPassword += randomGeneration[selectFunction]();
+    });
+  };
+
+  let generated = generatedPassword.slice(0, length);
+  return generated;
 }
 
 let totalLength = window.prompt("Password Length:");
